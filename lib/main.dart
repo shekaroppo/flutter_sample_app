@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'input_page.dart';
+
 //void main() {
 //  runApp(
 //    MaterialApp(
@@ -20,7 +22,7 @@ import 'package:flutter/material.dart';
 //}
 void main() {
   runApp(
-    ProfileScreen(),
+    BMICalculator(),
   );
 }
 
@@ -211,6 +213,154 @@ class ProfileScreen extends StatelessWidget {
 class DicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.red,
+        appBar: AppBar(
+          title: Text('Dicee'),
+          backgroundColor: Colors.red,
+        ),
+        body: Center(
+          child: Row(
+            children: <Widget>[
+//              Expanded(
+//                child: FlatButton(
+//                  child: Image.asset('images/dice$leftDiceNumber.png'),
+//                  onPressed: () {
+//                    print("Image 1 clicked");
+//                  },
+//                ),
+//              ),
+//              Expanded(
+//                child: FlatButton(
+//                  child: Image.asset('images/dice$rightDiceNumber.png'),
+//                  onPressed: () {
+//                    print("Image 2 clicked");
+//                  },
+//                ),
+//              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+//Section 10
+class Quizzler extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        backgroundColor: Colors.grey.shade900,
+        body: SafeArea(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            child: QuizPage(),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class QuizPage extends StatefulWidget {
+  @override
+  _QuizPageState createState() => _QuizPageState();
+}
+
+class _QuizPageState extends State<QuizPage> {
+  List<Icon> scoreKeeper = [
+    Icon(
+      Icons.close,
+      color: Colors.red,
+    )
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: <Widget>[
+        Expanded(
+          flex: 5,
+          child: Padding(
+            padding: EdgeInsets.all(10.0),
+            child: Center(
+              child: Text(
+                'This is where the question text will go.',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 25.0,
+                  color: Colors.white,
+                ),
+              ),
+            ),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.all(15.0),
+            child: FlatButton(
+              textColor: Colors.white,
+              color: Colors.green,
+              child: Text(
+                'True',
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 20.0,
+                ),
+              ),
+              onPressed: () {
+                //The user picked true.
+              },
+            ),
+          ),
+        ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.all(15.0),
+            child: FlatButton(
+              color: Colors.red,
+              child: Text(
+                'False',
+                style: TextStyle(
+                  fontSize: 20.0,
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {
+                setState(() {
+                  scoreKeeper.add(
+                    Icon(
+                      Icons.close,
+                      color: Colors.red,
+                    ),
+                  );
+                });
+              },
+            ),
+          ),
+        ),
+        Row(
+          children: scoreKeeper,
+        )
+      ],
+    );
+  }
+}
+
+//Section 12: BMI Calculator - Building Flutter UI for Intermediates
+
+class BMICalculator extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Color(0xFF04040C),
+      ),
+      home: InputPage(),
+    );
   }
 }
