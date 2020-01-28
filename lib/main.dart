@@ -352,7 +352,6 @@ class _QuizPageState extends State<QuizPage> {
 }
 
 //Section 12: BMI Calculator - Building Flutter UI for Intermediates
-
 class BMICalculator extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -362,6 +361,92 @@ class BMICalculator extends StatelessWidget {
         scaffoldBackgroundColor: Color(0xFF0F0D20),
       ),
       home: InputPage(),
+    );
+  }
+}
+
+class NavigationDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      initialRoute: '/',
+      routes: {
+        '/': (context) => Screen0(),
+        '/first': (context) => Screen1(),
+        '/second': (context) => Screen2(),
+      },
+    );
+  }
+}
+
+class Screen0 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Screen0'),
+      ),
+      body: Column(
+        children: <Widget>[
+          RaisedButton(
+            child: Text('Go to Screen1'),
+            onPressed: () {
+              Navigator.pushNamed(context, '/first');
+            },
+          ),
+          RaisedButton(
+            child: Text('Go to Screen2'),
+            onPressed: () {
+              Navigator.pushNamed(context, '/second');
+            },
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class Screen1 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Screen1'),
+      ),
+      body: Center(
+        child: RaisedButton(
+          child: Text('Go to Screen2'),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) {
+                  return Screen2();
+                },
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class Screen2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Screen2'),
+      ),
+      body: Center(
+        child: RaisedButton(
+          child: Text('Go to Screen1'),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
     );
   }
 }
