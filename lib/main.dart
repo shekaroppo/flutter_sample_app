@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_sample_app/clima/screens/loading_screen.dart';
 
 import 'screens/input_page.dart';
 
@@ -22,7 +23,7 @@ import 'screens/input_page.dart';
 //}
 void main() {
   runApp(
-    BMICalculator(),
+    Clima(),
   );
 }
 
@@ -447,6 +448,18 @@ class Screen2 extends StatelessWidget {
           },
         ),
       ),
+    );
+  }
+}
+
+//Section 13: Clima - Powering Your Flutter App with Live Web Data
+
+class Clima extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.dark(),
+      home: LoadingScreen(),
     );
   }
 }
