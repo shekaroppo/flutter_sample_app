@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_sample_app/constants.dart';
 
 class ResultsPage extends StatelessWidget {
+  final String resultsStatus;
+  final String results;
+
+  ResultsPage({this.results, this.resultsStatus});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,14 +38,14 @@ class ResultsPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: <Widget>[
                   Text(
-                    'OVERWEIGHT',
+                    resultsStatus,
                     style: TextStyle(
                         color: Color(0xFF7EDC9F),
                         fontSize: 20.0,
                         fontWeight: FontWeight.bold),
                   ),
                   Text(
-                    '26.7',
+                    results,
                     style: TextStyle(
                       fontSize: 80.0,
                       fontWeight: FontWeight.w900,

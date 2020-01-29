@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_sample_app/results_page.dart';
-import 'package:flutter_sample_app/reusable_components.dart';
+import 'package:flutter_sample_app/calculator_brain.dart';
+import 'package:flutter_sample_app/component/reusable_components.dart';
+import 'package:flutter_sample_app/screens/results_page.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import 'constants.dart';
+import '../constants.dart';
 
 enum Gender { male, female }
 
@@ -207,8 +208,14 @@ class _InputPageState extends State<InputPage> {
           ),
           GestureDetector(
             onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => ResultsPage()));
+              CalculatorBrain cb =
+                  CalculatorBrain(height: height, weight: weight);
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) => ResultsPage(
+                          results: cb.calculateBMI(),
+                          resultsStatus: cb.getResults())));
             },
             child: Container(
               alignment: AlignmentDirectional.center,
