@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_sample_app/clima/services/location.dart';
+import 'package:flutter_sample_app/clima/services/weather.dart';
 
 class LoadingScreen extends StatefulWidget {
   @override
@@ -10,7 +11,9 @@ class _LoadingScreenState extends State<LoadingScreen> {
   @override
   void initState() {
     super.initState();
-    getLocation();
+    getLocation().then((location) {
+      getWeather(location.latitude, location.longitude);
+    });
   }
 
   @override
@@ -20,10 +23,16 @@ class _LoadingScreenState extends State<LoadingScreen> {
     );
   }
 
-  void getLocation() async {
+  Future<Location> getLocation() async {
     Location location = Location();
     await location.geCurrentLocation();
-    print(location.latitude);
-    print(location.longitude);
+    return location;
+  }
+
+  void getWeather(double latitude, double longitude) async {
+    Weather weather = Weather();
+    weather.fetchWeather(latitude, longitude).then((response) {
+      print(response);
+    });
   }
 }

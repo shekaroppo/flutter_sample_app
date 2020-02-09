@@ -23,7 +23,7 @@ import 'screens/input_page.dart';
 //}
 void main() {
   runApp(
-    Clima(),
+    Quizzler(),
   );
 }
 
