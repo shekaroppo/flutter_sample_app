@@ -15,7 +15,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  var selectedGender = Gender.male;
+  Gender selectedGender = Gender.male;
   int height = 180;
   int weight = 0;
   int age = 0;
@@ -24,7 +24,7 @@ class _InputPageState extends State<InputPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('BMI Calculator'),
+        title: const Text('BMI Calculator'),
       ),
       body: Column(
         children: <Widget>[
@@ -94,13 +94,13 @@ class _InputPageState extends State<InputPage> {
                   SliderTheme(
                     data: SliderTheme.of(context).copyWith(
                         activeTrackColor: Colors.white,
-                        thumbColor: Color(0xFFEB1555),
-                        inactiveTrackColor: Color(0xFF8D8E98),
-                        overlayColor: Color(0x29EB1555),
+                        thumbColor: const Color(0xFFEB1555),
+                        inactiveTrackColor: const Color(0xFF8D8E98),
+                        overlayColor: const Color(0x29EB1555),
                         thumbShape:
-                            RoundSliderThumbShape(enabledThumbRadius: 10.0),
+                            const RoundSliderThumbShape(enabledThumbRadius: 10.0),
                         overlayShape:
-                            RoundSliderOverlayShape(overlayRadius: 20.0)),
+                            const RoundSliderOverlayShape(overlayRadius: 20.0)),
                     child: Slider(
                       value: height.toDouble(),
                       min: 0.0,
@@ -144,7 +144,7 @@ class _InputPageState extends State<InputPage> {
                                 });
                               },
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10.0,
                             ),
                             RoundIconButton(
@@ -186,7 +186,7 @@ class _InputPageState extends State<InputPage> {
                                 });
                               },
                             ),
-                            SizedBox(
+                            const SizedBox(
                               width: 10.0,
                             ),
                             RoundIconButton(
@@ -212,16 +212,16 @@ class _InputPageState extends State<InputPage> {
                   CalculatorBrain(height: height, weight: weight);
               Navigator.push(
                   context,
-                  MaterialPageRoute(
-                      builder: (context) => ResultsPage(
+                  MaterialPageRoute<ResultsPage>(
+                      builder: (BuildContext context) => ResultsPage(
                           results: cb.calculateBMI(),
                           resultsStatus: cb.getResults())));
             },
             child: Container(
               alignment: AlignmentDirectional.center,
-              color: Color(0xFFFE0067),
-              margin: EdgeInsets.only(top: 10.0),
-              padding: EdgeInsets.only(bottom: 10.0),
+              color: const Color(0xFFFE0067),
+              margin: const EdgeInsets.only(top: 10.0),
+              padding: const EdgeInsets.only(bottom: 10.0),
               width: double.infinity,
               height: kBottomContainerHeight,
               child: Text(

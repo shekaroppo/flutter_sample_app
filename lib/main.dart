@@ -43,28 +43,28 @@ class MyApp extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
-              margin: EdgeInsets.all(30),
-              padding: EdgeInsets.all(30),
+              margin: const EdgeInsets.all(30),
+              padding: const EdgeInsets.all(30),
               color: Colors.blue,
-              child: Text('Container 1'),
+              child: const Text('Container 1'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             Container(
-              margin: EdgeInsets.all(30),
-              padding: EdgeInsets.all(30),
+              margin:const EdgeInsets.all(30),
+              padding: const EdgeInsets.all(30),
               color: Colors.white,
-              child: Text('Container 2'),
+              child: const Text('Container 2'),
             ),
-            SizedBox(
+            const SizedBox(
               height: 20.0,
             ),
             Container(
-              margin: EdgeInsets.all(30),
-              padding: EdgeInsets.all(30),
+              margin: const EdgeInsets.all(30),
+              padding: const EdgeInsets.all(30),
               color: Colors.greenAccent,
-              child: Text('Container 3'),
+              child: const Text('Container 3'),
             ),
             Container(
               width: double.infinity,
@@ -134,7 +134,7 @@ class ProfileScreen extends StatelessWidget {
             children: <Widget>[
               CircleAvatar(
                 backgroundColor: Colors.white,
-                backgroundImage: NetworkImage(
+                backgroundImage: const NetworkImage(
                     'https://images.theconversation.com/files/301743/original/file-20191114-26207-lray93.jpg?ixlib=rb-1.1.0&q=45&auto=format&w=926&fit=clip'),
                 radius: 50,
               ),
@@ -166,7 +166,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               Card(
                 color: Colors.white,
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
+                margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
                 child: ListTile(
                   leading: Icon(
                     Icons.phone,
@@ -185,7 +185,7 @@ class ProfileScreen extends StatelessWidget {
               ),
               Card(
                 color: Colors.white,
-                margin: EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
+                margin: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 30.0),
                 child: ListTile(
                   leading: Icon(
                     Icons.mail,
@@ -218,7 +218,7 @@ class DicePage extends StatelessWidget {
       home: Scaffold(
         backgroundColor: Colors.red,
         appBar: AppBar(
-          title: Text('Dicee'),
+          title: const Text('Dicee'),
           backgroundColor: Colors.red,
         ),
         body: Center(
@@ -257,7 +257,7 @@ class Quizzler extends StatelessWidget {
         backgroundColor: Colors.grey.shade900,
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.symmetric(horizontal: 10.0),
+            padding: const EdgeInsets.symmetric(horizontal: 10.0),
             child: QuizPage(),
           ),
         ),
@@ -287,7 +287,7 @@ class _QuizPageState extends State<QuizPage> {
         Expanded(
           flex: 5,
           child: Padding(
-            padding: EdgeInsets.all(10.0),
+            padding: const EdgeInsets.all(10.0),
             child: Center(
               child: Text(
                 'This is where the question text will go.',
@@ -302,7 +302,7 @@ class _QuizPageState extends State<QuizPage> {
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: FlatButton(
               textColor: Colors.white,
               color: Colors.green,
@@ -321,7 +321,7 @@ class _QuizPageState extends State<QuizPage> {
         ),
         Expanded(
           child: Padding(
-            padding: EdgeInsets.all(15.0),
+            padding: const EdgeInsets.all(15.0),
             child: FlatButton(
               color: Colors.red,
               child: Text(
@@ -358,8 +358,8 @@ class BMICalculator extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData.dark().copyWith(
-        primaryColor: Color(0xFF0F0D20),
-        scaffoldBackgroundColor: Color(0xFF0F0D20),
+        primaryColor: const Color(0xFF0F0D20),
+        scaffoldBackgroundColor: const Color(0xFF0F0D20),
       ),
       home: InputPage(),
     );
@@ -372,9 +372,9 @@ class NavigationDemo extends StatelessWidget {
     return MaterialApp(
       initialRoute: '/',
       routes: {
-        '/': (context) => Screen0(),
-        '/first': (context) => Screen1(),
-        '/second': (context) => Screen2(),
+        '/': (BuildContext context) => Screen0(),
+        '/first': (BuildContext context) => Screen1(),
+        '/second': (BuildContext context) => Screen2(),
       },
     );
   }
@@ -385,18 +385,18 @@ class Screen0 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Screen0'),
+        title: const Text('Screen0'),
       ),
       body: Column(
         children: <Widget>[
           RaisedButton(
-            child: Text('Go to Screen1'),
+            child: const Text('Go to Screen1'),
             onPressed: () {
               Navigator.pushNamed(context, '/first');
             },
           ),
           RaisedButton(
-            child: Text('Go to Screen2'),
+            child: const Text('Go to Screen2'),
             onPressed: () {
               Navigator.pushNamed(context, '/second');
             },
@@ -412,16 +412,13 @@ class Screen1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Screen1'),
+        title: const Text('Screen1'),
       ),
       body: Center(
         child: RaisedButton(
-          child: Text('Go to Screen2'),
+          child: const Text('Go to Screen2'),
           onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) {
+            Navigator.push(context, MaterialPageRoute<Screen2>(builder: (BuildContext context) {
                   return Screen2();
                 },
               ),
@@ -438,11 +435,11 @@ class Screen2 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Screen2'),
+        title: const Text('Screen2'),
       ),
       body: Center(
         child: RaisedButton(
-          child: Text('Go to Screen1'),
+          child: const Text('Go to Screen1'),
           onPressed: () {
             Navigator.pop(context);
           },
